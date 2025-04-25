@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>CS50 Birthdays</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Welcome to CS50 Birthdays!</h1>
+        <p>Find out when your friends' birthdays are!</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Search for a Birthday</h2>
+            <hr>
+
+            <p>Enter a name to find the corresponding birthday from the database:</p>
+
+            <input type="text" id="name" placeholder="Enter Name">
+            <button onclick="findBirthday()">Search</button>
+
+            <div id="result">
+                <!-- The result will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 CS50. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Example birthday database (in practice, this would be done with a database)
+        const birthdays = {
+            "Alice": "January 1, 1990",
+            "Bob": "February 14, 1992",
+            "Charlie": "March 10, 1985",
+            "David": "April 25, 1991",
+            "Eve": "May 5, 1988"
+        };
+
+        // Function to search for the birthday
+        function findBirthday() {
+            const name = document.getElementById('name').value.trim();
+            const result = document.getElementById('result');
+
+            if (name === "") {
+                result.innerHTML = "<p>Please enter a name.</p>";
+            } else if (birthdays[name]) {
+                result.innerHTML = `<p>${name}'s birthday is on <strong>${birthdays[name]}</strong>.</p>`;
+            } else {
+                result.innerHTML = `<p>No birthday found for ${name}. Try again!</p>`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
